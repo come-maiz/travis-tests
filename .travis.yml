@@ -1,7 +1,11 @@
 sudo: false
 
+addons:
+  apt:
+    packages:
+       - snapd
+
 install:
-  - apt install --yes snapd
   - snap install hugo
 
 script:
