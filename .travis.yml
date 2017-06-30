@@ -1,8 +1,8 @@
 sudo: false
 
 install:
-  - sudo apt install --yes snapd
-  - sudo snap install hugo
+  - apt install --yes snapd
+  - snap install hugo
 
 script:
   - /snap/bin/hugo new site test-site
