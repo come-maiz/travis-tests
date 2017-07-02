@@ -2,10 +2,9 @@ sudo: true
 dist: trusty
 
 install:
-  - sudo apt-get --yes install snapd
-  - sudo snap install lxd
-  - sudo /snap/bin/lxd init --auto
-  - sudo /snap/bin/lxc launch ubuntu:xenial
+  - sudo apt-get --yes lxd
+  - sudo lxd init --auto
+  - sudo lxc launch ubuntu:xenial
 
 script:
   - /snap/bin/hugo new site test-site
