@@ -2,7 +2,7 @@ sudo: true
 dist: trusty
 
 install:
-  - sudo apt-get --yes lxd
+  - sudo apt-get install --yes lxd
   - sudo lxd init --auto
   - sudo lxc launch ubuntu:xenial
 
