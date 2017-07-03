@@ -5,7 +5,8 @@ install:
   - sudo apt-get update
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo lxd init --auto
-  - sudo lxc launch ubuntu:xenial
+  - newgrp lxd
+  - lxc launch ubuntu:xenial
 
 script:
   - /snap/bin/hugo new site test-site
