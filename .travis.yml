@@ -3,7 +3,7 @@ dist: trusty
 
 install:
   - sudo apt-get update
-  - sudo apt-get install --yes lxd
+  - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo lxd init --auto
   - sudo lxc launch ubuntu:xenial
 
