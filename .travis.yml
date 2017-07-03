@@ -5,8 +5,7 @@ install:
   - sudo apt-get update
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo lxd init --auto
-  - sudo lxc network create testbr0
-  - sudo lxc network attach-profile testbr0 default eth0
+  - sudo dpkg-reconfigure -f noniteractive -p medium lxd
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
 
 script:
