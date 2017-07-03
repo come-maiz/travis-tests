@@ -5,8 +5,9 @@ install:
   - sudo apt-get update
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo lxd init --auto
-  - newgrp lxd
-  - lxc launch ubuntu:xenial
+  - sudo lxc launch --ephemeral ubuntu:xenial test-container
 
 script:
+  - sudo lxc exec test-container -- sudo apt-get update && sudo apt-get install --yes snapd squashfuse
+  - sudo lxc exec test-container -- sudo snap install hugo
   - /snap/bin/hugo new site test-site
