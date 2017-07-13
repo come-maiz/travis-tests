@@ -13,8 +13,10 @@ install:
   - sudo lxc profile unset default environment.http_proxy
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
   - sleep 30
+  - ps fauxww
 
 script:
+  - sudo lxc exec test-container -- ip addr show
   - sudo lxc exec test-container -- sudo apt-get update && sudo apt-get install --yes snapd squashfuse
   - sudo lxc exec test-container -- sudo snap install hugo
   - /snap/bin/hugo new site test-site
