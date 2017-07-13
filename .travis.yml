@@ -9,8 +9,8 @@ install:
   - sudo cat /var/log/upstart/lxd.log
   - ifconfig -a
   - sudo lxc profile device set default eth0 parent docker0
-  - sudo lxc profile unset user.network_mode
-  - sudo lxc profile unset environment.http_proxy
+  - sudo lxc profile unset default user.network_mode
+  - sudo lxc profile unset default environment.http_proxy
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
   - sleep 30
 
