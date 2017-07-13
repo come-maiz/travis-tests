@@ -3,11 +3,10 @@ dist: trusty
 
 install:
   - sudo apt-get update
-  - sudo apt-get install --yes apt-utils
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo cat /etc/default/lxd-bridge
   #- sudo lxd init --auto
-  - sudo service lxd-bridge stop
+  - stop lxd-bridge
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo service lxd-bridge start
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
