@@ -4,6 +4,7 @@ dist: trusty
 install:
   - sudo apt-get update
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
+  - ls /etc/default
   - sudo lxd init --auto
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo start lxd-bridge
