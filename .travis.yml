@@ -6,7 +6,7 @@ install:
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo /usr/lib/lxd/lxd-bridge stop
-  - sudo /usr/lib/lxd/lxd-bridge start
+  - sudo bash -x /usr/lib/lxd/lxd-bridge start
   - sudo restart lxd
   - sudo cat /var/log/upstart/lxd.log
   - ifconfig -a
