@@ -6,8 +6,9 @@ install:
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo restart lxd
+  - ifconfig -a
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
-  - sleep 10
+  - sleep 30
 
 script:
   - sudo lxc exec test-container -- sudo apt-get update && sudo apt-get install --yes snapd squashfuse
