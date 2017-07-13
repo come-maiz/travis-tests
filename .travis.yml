@@ -7,6 +7,7 @@ install:
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo restart lxd
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
+  - sleep 10
 
 script:
   - sudo lxc exec test-container -- sudo apt-get update && sudo apt-get install --yes snapd squashfuse
