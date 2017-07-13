@@ -6,6 +6,7 @@ install:
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo cp lxd-bridge /etc/default/lxd-bridge
   - sudo restart lxd
+  - sudo cat /var/log/upstart/lxd.log
   - ifconfig -a
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
   - sleep 30
