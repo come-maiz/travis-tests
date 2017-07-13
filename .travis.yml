@@ -6,9 +6,8 @@ install:
   - sudo apt-get install --yes -t trusty-backports lxd lxd-client
   - sudo cat /etc/default/lxd-bridge
   #- sudo lxd init --auto
-  - sudo stop lxd-bridge
   - sudo cp lxd-bridge /etc/default/lxd-bridge
-  - sudo start lxd-bridge
+  - sudo restart lxd
   - sudo lxc launch --ephemeral ubuntu:xenial test-container
 
 script:
