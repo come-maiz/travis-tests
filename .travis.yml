@@ -5,11 +5,12 @@ install:
   - sudo apt-get update
   - sudo apt-get install --yes snapd
   - sudo snap install lxd
-  - sleep 30
+  - sleep 10
   - sudo /snap/bin/lxd init --auto
   - sudo /snap/bin/lxc network create testbr0
   - sudo /snap/bin/lxc network attach-profile testbr0 default eth0
   - sudo /snap/bin/lxc launch --ephemeral ubuntu:xenial test-container
+  - sleep 10
 
 script:
   - sudo /snap/bin/lxc exec test-container -- apt-get update && apt-get install --yes snapd squashfuse
