@@ -13,6 +13,8 @@ install:
   - sleep 10
 
 script:
-  - sudo /snap/bin/lxc exec test-container -- apt-get update && sudo apt-get install --yes snapd squashfuse
+  - sudo /snap/bin/lxc exec test-container -- apt-get update
+  - sleep 10
+  - sudo /snap/bin/lxc exec test-container -- apt-get install --yes snapd squashfuse
   - sudo /snap/bin/lxc exec test-container -- snap install hugo
   - sudo /snap/bin/lxc exec test-container -- hugo new site test-site
