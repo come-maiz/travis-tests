@@ -3,23 +3,14 @@ dist: trusty
 
 install:
   - sudo apt-get update
-  - sudo apt-get install --yes -t trusty-backports lxd lxd-client
-  - sudo cp lxd-bridge /etc/default/lxd-bridge
-  - sudo /usr/lib/lxd/lxd-bridge stop
-  - sudo bash -x /usr/lib/lxd/lxd-bridge start
-#  - sudo restart lxd
-  - sudo cat /var/log/upstart/lxd.log
-  - ifconfig -a
-#  - sudo lxc profile device set default eth0 parent docker0
-#  - sudo lxc profile unset default user.network_mode
-#  - sudo lxc profile unset default environment.http_proxy
-  - sudo lxc launch --ephemeral ubuntu:xenial test-container
-  - sleep 30
-  - ps fauxww
+  - sudo apt-get install --yes snapd
+  - sudo snap install lxd
+  - sudo /snap/bin/lxd init --auto
+  - sudo /snap/bin/lxc network create testbr0
+  - sudo /snap/bin/lxc network attach-profile testbr0 default eth0
+  - sudo /snap/bin/lxc launch --ephemeral ubuntu:xenial test-container
 
 script:
-  - sudo lxc exec test-container -- ip addr show
-  - sudo lxc exec test-container -- ping 8.8.8.8
-  - sudo lxc exec test-container -- sudo apt-get update && sudo apt-get install --yes snapd squashfuse
-  - sudo lxc exec test-container -- sudo snap install hugo
-  - /snap/bin/hugo new site test-site
+  - sudo /snap/bin/lxc exec test-container -- apt-get update && apt-get install --yes snapd squashfuse
+  - sudo /snap/bin/lxc exec test-container -- snap install hugo
+  - sudo /snap/bin/lxc exec test-container -- hugo new site test-site
